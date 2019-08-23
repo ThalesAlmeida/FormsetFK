@@ -10,6 +10,9 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100)
     created_date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.first_name
+
     def get_absolute_url(self):
         return reverse('author:profile-update', kwargs={'pk': self.pk})
 
@@ -21,6 +24,9 @@ class FamilyMember(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     relationship = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.relationship
 
 
 
